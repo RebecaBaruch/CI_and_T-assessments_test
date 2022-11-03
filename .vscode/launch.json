@@ -5,6 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         
+    
+        
         {
             "type": "node",
             "request": "launch",
@@ -12,7 +14,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\public\\challenge03.js"
+            "program": "${workspaceFolder}\\public\\challenge04.js"
         }
     ]
 }
