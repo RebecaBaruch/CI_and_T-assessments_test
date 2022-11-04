@@ -27,3 +27,5 @@ function calculaPorcentagemSorteio(assinante,minutosAssistidos) {
   
   return per;
 }
+
+calculaPorcentagemSorteio(assinante,minutosAssistidos)
