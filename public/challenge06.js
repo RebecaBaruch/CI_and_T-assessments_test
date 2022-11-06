@@ -1,39 +1,46 @@
-let numero = 12345;
-let numeroOculto = 235;
-
 function checaNumeroEscondido(numero,numeroOculto) {
-  
-  let numeroArr = [];
-  let numOculArr = [];
-  
-  let nTrans = String(numero).split("").map((numero)=>{
-    numeroArr.push(Number(numero))
+  //base
+  let numeroNormal = []
+  let numeroOcultado = []
+
+  //validação
+  let testeF = []
+
+  //base
+  String(numero).split("").map((numero)=>{
+    numeroNormal.push(Number(numero))
   })
-  let noTrans = String(numeroOculto).split("").map((numeroOculto)=>{
-    numOculArr.push(Number(numeroOculto))
+  String(numeroOculto).split("").map((numeroOculto)=>{
+    numeroOcultado.push(Number(numeroOculto))
   })
-  
-  let numVer = numeroArr;
-  let newVer = [];
-  
-  console.log(numVer);
-  
-  for(i=0;i<numOculArr.length;i++){
-      
-    for(j=0;j<numVer.length;j++){
-      if(numeroArr[0]!=numVer[i]){
-        console.log("NUMERO:" + numeroArr[j]);
-        console.log("OCULTO:" + numOculArr[0]);
-        console.log("numVer: " + numVer + "\n");
-        numVer.splice(0, 1);
-      }else{
-         newVer.push(numVer[0]);
-         numVer.splice(0,1);
+  //validação
+   String(numero).split("").map((numero)=>{
+    testeF.push(Number(numero))
+  })
+
+  //retirar os numeros para aparecer o oculto
+  for(o=0;o<numeroOcultado.length;o++){
+      for(n=0;n<numeroNormal.length;n++){
+        if(numeroOcultado[o] == numeroNormal[n]){
+          var x = testeF.indexOf(numeroNormal[n])
+           testeF.splice(x, 1) //vai armazenar [1,4] no teste F
+        } 
       }
-    }
+   }
+
+  for(i=0;i<numeroOcultado.length;i++){
+     var validacao = numeroOcultado.includes(numeroNormal[i])
+  }
+  for(j=0;j<testeF.length;j++){
+    var validacaoOct = numeroNormal.includes(testeF[j])
+  }
+
+   if(validacao == true){
+      return true
+  } else if(validacao == false || validacaoOct == false) {
+    return false
+  } else{
+    return undefined
   }
   
-  console.log("\n" + newVer);
 }
-
-checaNumeroEscondido(numero,numeroOculto);
