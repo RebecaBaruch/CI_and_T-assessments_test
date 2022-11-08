@@ -1,43 +1,53 @@
+/*
+Dizemos que um número natural X esconde o Y quando, ao apagar alguns algarismos de X, o número Y aparece. Por exemplo, o número 12345 esconde o número 235, uma vez que pode ser obtido ao apagar os números 1 e 4. Por outro lado, ele não esconde o número 154.
+
+A imagem demonstra números: 1,2,3,4,5 todos estão em azul, mas o número 1 e 4 estão com um risco vermelho.
+
+Escreva um código que recebe dois números e que retorna um booleano dizendo se o primeiro esconde o segundo.
+
+
+*/
+
 function checaNumeroEscondido(numero,numeroOculto) {
-  //base
-  let numeroNormal = []
-  let numeroOcultado = []
+  let num = [];//armazena os alagarismos do numero
+  let numOcult = [];//armazena os alagarismos do numero oculto
 
-  //validação
-  let testeF = []
+  let nTest = [];
 
-  //base
+  //transforma os numeros em elementos separados de uma array
   String(numero).split("").map((numero)=>{
-    numeroNormal.push(Number(numero))
-  })
+    num.push(Number(numero))
+  });
   String(numeroOculto).split("").map((numeroOculto)=>{
-    numeroOcultado.push(Number(numeroOculto))
-  })
-  //validação
+    numOcult.push(Number(numeroOculto))
+  });
+  
+  //armazena para validar
    String(numero).split("").map((numero)=>{
-    testeF.push(Number(numero))
-  })
+    nTest.push(Number(numero))
+  });
 
-  //retirar os numeros para aparecer o oculto
-  for(o=0;o<numeroOcultado.length;o++){
-      for(n=0;n<numeroNormal.length;n++){
-        if(numeroOcultado[o] == numeroNormal[n]){
-          var x = testeF.indexOf(numeroNormal[n])
-           testeF.splice(x, 1) //vai armazenar [1,4] no teste F
+  //remove de nTest os numeros equivalentes
+  for(i=0;i<numOcult.length;i++){
+      for(j=0;j<num.length;j++){
+        if(numOcult[i] == num[j]){
+          var x = nTest.indexOf(num[j])
+           nTest.splice(x, 1) ;
         } 
       }
    }
-
-  for(i=0;i<numeroOcultado.length;i++){
-     var validacao = numeroOcultado.includes(numeroNormal[i])
+  
+  //verifica se um obtém o outro
+  for(k=0;k<numOcult.length;k++){
+     var test = numOcult.includes(num[k]);
   }
-  for(j=0;j<testeF.length;j++){
-    var validacaoOct = numeroNormal.includes(testeF[j])
+  for(n=0;n<nTest.length;n++){
+    var testOcult = num.includes(nTest[n]);
   }
 
-   if(validacao == true){
+   if(test == true){
       return true
-  } else if(validacao == false || validacaoOct == false) {
+  } else if(test == false || testOcult == false) {
     return false
   } else{
     return undefined
